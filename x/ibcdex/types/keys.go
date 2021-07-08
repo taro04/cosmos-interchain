@@ -1,5 +1,7 @@
 package types
 
+import "fmt"
+
 const (
 	// ModuleName defines the module name
 	ModuleName = "ibcdex"
@@ -30,4 +32,30 @@ var (
 
 func KeyPrefix(p string) []byte {
 	return []byte(p)
+}
+
+const (
+	SellOrderBookKey = "SellOrderBook-value-"
+)
+
+const (
+	BuyOrderBookKey = "BuyOrderBook-value-"
+)
+
+const (
+	DenomTraceKey = "DenomTrace-value-"
+)
+
+func OrderBookIndex(
+	portID string,
+	channelID string,
+	sourceDenom string,
+	targetDenom string,
+) string {
+	return fmt.Sprintf("%s-%s-%s-%s",
+		portID,
+		channelID,
+		sourceDenom,
+		targetDenom,
+	)
 }

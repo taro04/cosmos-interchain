@@ -10,6 +10,20 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// this line is used by starport scaffolding # genesis/module/init
+	// Set all the denomTrace
+	for _, elem := range genState.DenomTraceList {
+		k.SetDenomTrace(ctx, *elem)
+	}
+
+	// Set all the buyOrderBook
+	for _, elem := range genState.BuyOrderBookList {
+		k.SetBuyOrderBook(ctx, *elem)
+	}
+
+	// Set all the sellOrderBook
+	for _, elem := range genState.SellOrderBookList {
+		k.SetSellOrderBook(ctx, *elem)
+	}
 
 	k.SetPort(ctx, genState.PortId)
 	// Only try to bind to port if it is not already bound, since we may already own
@@ -29,6 +43,26 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 
 	// this line is used by starport scaffolding # genesis/module/export
+	// Get all denomTrace
+	denomTraceList := k.GetAllDenomTrace(ctx)
+	for _, elem := range denomTraceList {
+		elem := elem
+		genesis.DenomTraceList = append(genesis.DenomTraceList, &elem)
+	}
+
+	// Get all buyOrderBook
+	buyOrderBookList := k.GetAllBuyOrderBook(ctx)
+	for _, elem := range buyOrderBookList {
+		elem := elem
+		genesis.BuyOrderBookList = append(genesis.BuyOrderBookList, &elem)
+	}
+
+	// Get all sellOrderBook
+	sellOrderBookList := k.GetAllSellOrderBook(ctx)
+	for _, elem := range sellOrderBookList {
+		elem := elem
+		genesis.SellOrderBookList = append(genesis.SellOrderBookList, &elem)
+	}
 
 	genesis.PortId = k.GetPort(ctx)
 
