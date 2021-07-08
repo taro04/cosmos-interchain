@@ -19297,6 +19297,28 @@ paths:
                       type: string
                     priceDenom:
                       type: string
+                    book:
+                      type: object
+                      properties:
+                        idCount:
+                          type: integer
+                          format: int32
+                        orders:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                format: int32
+                              creator:
+                                type: string
+                              amount:
+                                type: integer
+                                format: int32
+                              price:
+                                type: integer
+                                format: int32
               pagination:
                 type: object
                 properties:
@@ -19414,6 +19436,28 @@ paths:
                     type: string
                   priceDenom:
                     type: string
+                  book:
+                    type: object
+                    properties:
+                      idCount:
+                        type: integer
+                        format: int32
+                      orders:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              format: int32
+                            creator:
+                              type: string
+                            amount:
+                              type: integer
+                              format: int32
+                            price:
+                              type: integer
+                              format: int32
         default:
           description: An unexpected error response.
           schema:
@@ -19635,6 +19679,28 @@ paths:
                       type: string
                     priceDenom:
                       type: string
+                    book:
+                      type: object
+                      properties:
+                        idCount:
+                          type: integer
+                          format: int32
+                        orders:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                format: int32
+                              creator:
+                                type: string
+                              amount:
+                                type: integer
+                                format: int32
+                              price:
+                                type: integer
+                                format: int32
               pagination:
                 type: object
                 properties:
@@ -19752,6 +19818,28 @@ paths:
                     type: string
                   priceDenom:
                     type: string
+                  book:
+                    type: object
+                    properties:
+                      idCount:
+                        type: integer
+                        format: int32
+                      orders:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              format: int32
+                            creator:
+                              type: string
+                            amount:
+                              type: integer
+                              format: int32
+                            price:
+                              type: integer
+                              format: int32
         default:
           description: An unexpected error response.
           schema:
@@ -30004,6 +30092,28 @@ definitions:
         type: string
       priceDenom:
         type: string
+      book:
+        type: object
+        properties:
+          idCount:
+            type: integer
+            format: int32
+          orders:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                creator:
+                  type: string
+                amount:
+                  type: integer
+                  format: int32
+                price:
+                  type: integer
+                  format: int32
   username.interchange.ibcdex.DenomTrace:
     type: object
     properties:
@@ -30027,6 +30137,42 @@ definitions:
     type: object
   username.interchange.ibcdex.MsgSendSellOrderResponse:
     type: object
+  username.interchange.ibcdex.Order:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      creator:
+        type: string
+      amount:
+        type: integer
+        format: int32
+      price:
+        type: integer
+        format: int32
+  username.interchange.ibcdex.OrderBook:
+    type: object
+    properties:
+      idCount:
+        type: integer
+        format: int32
+      orders:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int32
+            creator:
+              type: string
+            amount:
+              type: integer
+              format: int32
+            price:
+              type: integer
+              format: int32
   username.interchange.ibcdex.QueryAllBuyOrderBookResponse:
     type: object
     properties:
@@ -30043,6 +30189,28 @@ definitions:
               type: string
             priceDenom:
               type: string
+            book:
+              type: object
+              properties:
+                idCount:
+                  type: integer
+                  format: int32
+                orders:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                      creator:
+                        type: string
+                      amount:
+                        type: integer
+                        format: int32
+                      price:
+                        type: integer
+                        format: int32
       pagination:
         type: object
         properties:
@@ -30127,6 +30295,28 @@ definitions:
               type: string
             priceDenom:
               type: string
+            book:
+              type: object
+              properties:
+                idCount:
+                  type: integer
+                  format: int32
+                orders:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int32
+                      creator:
+                        type: string
+                      amount:
+                        type: integer
+                        format: int32
+                      price:
+                        type: integer
+                        format: int32
       pagination:
         type: object
         properties:
@@ -30166,6 +30356,28 @@ definitions:
             type: string
           priceDenom:
             type: string
+          book:
+            type: object
+            properties:
+              idCount:
+                type: integer
+                format: int32
+              orders:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int32
+                    creator:
+                      type: string
+                    amount:
+                      type: integer
+                      format: int32
+                    price:
+                      type: integer
+                      format: int32
   username.interchange.ibcdex.QueryGetDenomTraceResponse:
     type: object
     properties:
@@ -30196,6 +30408,28 @@ definitions:
             type: string
           priceDenom:
             type: string
+          book:
+            type: object
+            properties:
+              idCount:
+                type: integer
+                format: int32
+              orders:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int32
+                    creator:
+                      type: string
+                    amount:
+                      type: integer
+                      format: int32
+                    price:
+                      type: integer
+                      format: int32
   username.interchange.ibcdex.SellOrderBook:
     type: object
     properties:
@@ -30207,3 +30441,25 @@ definitions:
         type: string
       priceDenom:
         type: string
+      book:
+        type: object
+        properties:
+          idCount:
+            type: integer
+            format: int32
+          orders:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                creator:
+                  type: string
+                amount:
+                  type: integer
+                  format: int32
+                price:
+                  type: integer
+                  format: int32

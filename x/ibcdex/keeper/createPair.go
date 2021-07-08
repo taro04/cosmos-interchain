@@ -111,6 +111,12 @@ func (k Keeper) OnAcknowledgementCreatePairPacket(ctx sdk.Context, packet channe
 		}
 
 		// TODO: successful acknowledgement logic
+		//* tsunoda
+		// Set the sell order book
+		pairIndex := types.OrderBookIndex(packet.SourcePort, packet.SourceChannel, data.SourceDenom, data.TargetDenom)
+		book := types.NewSellOrderBook(data.SourceDenom, data.TargetDenom)
+		book.Index = pairIndex
+		k.SetSellOrderBook(ctx, book)
 
 		return nil
 	default:

@@ -84,6 +84,7 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	appparams "github.com/username/interchange/app/params"
 	"github.com/username/interchange/docs"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	"github.com/username/interchange/x/ibcdex"
 	ibcdexkeeper "github.com/username/interchange/x/ibcdex/keeper"
@@ -340,6 +341,7 @@ func New(
 		app.IBCKeeper.ChannelKeeper,
 		&app.IBCKeeper.PortKeeper,
 		scopedIbcdexKeeper,
+		app.BankKeeper, // <--
 	)
 	ibcdexModule := ibcdex.NewAppModule(appCodec, app.IbcdexKeeper)
 
