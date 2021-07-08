@@ -142,7 +142,7 @@ export const NoData = {
         return message;
     }
 };
-const baseBuyOrderPacketData = { amountDenom: '', amount: 0, priceDenom: '', price: 0 };
+const baseBuyOrderPacketData = { amountDenom: '', amount: 0, priceDenom: '', price: 0, buyer: '' };
 export const BuyOrderPacketData = {
     encode(message, writer = Writer.create()) {
         if (message.amountDenom !== '') {
@@ -156,6 +156,9 @@ export const BuyOrderPacketData = {
         }
         if (message.price !== 0) {
             writer.uint32(32).int32(message.price);
+        }
+        if (message.buyer !== '') {
+            writer.uint32(42).string(message.buyer);
         }
         return writer;
     },
@@ -177,6 +180,9 @@ export const BuyOrderPacketData = {
                     break;
                 case 4:
                     message.price = reader.int32();
+                    break;
+                case 5:
+                    message.buyer = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -211,6 +217,12 @@ export const BuyOrderPacketData = {
         else {
             message.price = 0;
         }
+        if (object.buyer !== undefined && object.buyer !== null) {
+            message.buyer = String(object.buyer);
+        }
+        else {
+            message.buyer = '';
+        }
         return message;
     },
     toJSON(message) {
@@ -219,6 +231,7 @@ export const BuyOrderPacketData = {
         message.amount !== undefined && (obj.amount = message.amount);
         message.priceDenom !== undefined && (obj.priceDenom = message.priceDenom);
         message.price !== undefined && (obj.price = message.price);
+        message.buyer !== undefined && (obj.buyer = message.buyer);
         return obj;
     },
     fromPartial(object) {
@@ -246,6 +259,12 @@ export const BuyOrderPacketData = {
         }
         else {
             message.price = 0;
+        }
+        if (object.buyer !== undefined && object.buyer !== null) {
+            message.buyer = object.buyer;
+        }
+        else {
+            message.buyer = '';
         }
         return message;
     }

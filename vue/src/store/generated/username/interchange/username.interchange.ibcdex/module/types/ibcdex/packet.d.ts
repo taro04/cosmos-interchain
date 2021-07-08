@@ -20,6 +20,8 @@ export interface BuyOrderPacketData {
     amount: number;
     priceDenom: string;
     price: number;
+    /** <-*tsunoda */
+    buyer: string;
 }
 /** BuyOrderPacketAck defines a struct for the packet acknowledgment */
 export interface BuyOrderPacketAck {
